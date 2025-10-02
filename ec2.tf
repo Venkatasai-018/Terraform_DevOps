@@ -2,7 +2,7 @@
 
 resource "aws_key_pair" "my_key" {
     
-    key_name = "terra-key-ec2"
+    key_name = "mykey"
     public_key = file("mykey.pub")
 
 }
@@ -70,6 +70,10 @@ resource "aws_instance" "my_instance" {
   }
   tags = {
     Name="VenkatTerraform"
-    
+
   }
 }
+
+
+
+
