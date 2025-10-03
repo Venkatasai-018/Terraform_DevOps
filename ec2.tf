@@ -69,7 +69,7 @@ resource "aws_instance" "my_instance" {
     volume_type = var.ec2_root_volume_type
   }
   tags = {
-    Name="VenkatTerraform"
+    Name="Venkatasai"
 
   }
 }
