@@ -59,7 +59,7 @@ resource "aws_security_group" "my_security_group" {
 }
 
 
-resource "aws_instance" "my_instance" {
+resource "aws_instance" "instance1" {
   key_name=aws_key_pair.my_key.key_name
   security_groups = [aws_security_group.my_security_group.name]
   instance_type = var.ec2_instance_type
