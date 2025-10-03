@@ -14,7 +14,8 @@ resource "aws_default_vpc" "default" {
 }
 
 resource "aws_security_group" "my_security_group" {
-  
+    
+    
       name="automate_sg"
       description = "Automation Security Group"
       vpc_id = aws_default_vpc.default.id # interpolation reference to above 
@@ -60,9 +61,13 @@ resource "aws_security_group" "my_security_group" {
 
 
 resource "aws_instance" "instance1" {
+  for_each = tomap({
+        Dev="t2.micro"
+        Qa="t2.micro"
+    })
   key_name=aws_key_pair.my_key.key_name
   security_groups = [aws_security_group.my_security_group.name]
-  instance_type = var.ec2_instance_type
+  instance_type = each.value
   ami=var.ec2_ami_id
   
   user_data = file("ngnix.sh")
@@ -71,7 +76,7 @@ resource "aws_instance" "instance1" {
     volume_type = var.ec2_root_volume_type
   }
   tags = {
-    Name="Venkatasai-hello"
+    Name=each.key
 
   }
 }
