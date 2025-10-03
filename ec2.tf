@@ -73,7 +73,7 @@ resource "aws_instance" "instance" {
   
   user_data = file("ngnix.sh")
   root_block_device {
-    volume_size = var.ec2_root_storage_size
+    volume_size = var.Env == "Dev" ? 15 : var.ec2_root_storage_size
     volume_type = var.ec2_root_volume_type
   }
   tags = {

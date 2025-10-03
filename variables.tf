@@ -17,3 +17,8 @@ variable "ec2_root_volume_type" {
   default = "gp3"
   type = string
 }
+
+variable "Env" {
+ default="Dev"
+ type=string 
+}
