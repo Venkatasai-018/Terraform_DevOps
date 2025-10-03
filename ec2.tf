@@ -65,6 +65,7 @@ resource "aws_instance" "instance" {
         Dev="t2.micro"
         Qa="t2.micro"
     })
+    depends_on = [ aws_default_vpc.default,aws_security_group.my_security_group,aws_key_pair.my_key ]
   key_name=aws_key_pair.my_key.key_name
   security_groups = [aws_security_group.my_security_group.name]
   instance_type = each.value
