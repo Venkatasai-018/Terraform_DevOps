@@ -60,7 +60,7 @@ resource "aws_security_group" "my_security_group" {
 }
 
 
-resource "aws_instance" "instance1" {
+resource "aws_instance" "instance" {
   for_each = tomap({
         Dev="t2.micro"
         Qa="t2.micro"
